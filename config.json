@@ -4,10 +4,11 @@
   "utcf": "2034-Dec-24 21:17:13.806",
   "tsamples": 1,
   "instrument": "JUICE_JMC-1",
+  "instrument_frame": "",
   "lt": "LT+S",
-  "yfov": 93,
-  "pxlines": 1024,
-  "pxsamples": 1024,
+  "yfov": "",
+  "pxlines": "",
+  "pxsamples": "",
   "lightfactor": 10,
   "output": "/Users/aescalante/spice/packages/spiblender/SIM/"
 }

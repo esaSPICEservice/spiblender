@@ -53,7 +53,7 @@ Installation
 ------------
 
 There is no need to install SPiBlender. If you wish to use SPiBlender, first download or clone the project. 
-Then update the config file ``config.json`` with the parameters for your study case and run ``python spiblender.py``.
+Then update the config file ``config.json`` with the parameters for your study case and run ``render.sh``.
 
 
 Requirements:

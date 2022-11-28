@@ -15,7 +15,7 @@ cspice.furnsh(mk)
 
 scalefactor = 1
 lt = config['lt']
-instrument = config['instrument']
+
 #
 # create time series
 #
@@ -24,6 +24,43 @@ et0 = cspice.utc2et(utc0)
 utcf = config['utcf']
 etf = cspice.utc2et(utcf)
 times = np.linspace(et0, etf, int(config['tsamples']))
+
+#
+# compute camera id and parameters from kernel pool
+#
+instrument = config['instrument']
+camera_id = cspice.bodn2c(instrument)
+(shape, frame, bsight, vectors, bounds) = cspice.getfov(camera_id, 100)
+
+camera_frame = config['instrument_frame']
+if not camera_frame:
+    if frame:
+        camera_frame = frame
+    else:
+        print("CAMERA FRAME not defined for "
+              "{}".format(config['camera']))
+
+pixel_lines = config['pxlines']
+pixel_samples = config['pxsamples']
+if not pixel_lines or not pixel_samples:
+    try:
+        pixel_lines = int(cspice.gdpool('INS' + str(camera_id) + '_PIXEL_LINES', 0, 1))
+        pixel_samples = int(cspice.gdpool('INS' + str(camera_id) + '_PIXEL_SAMPLES', 0, 1))
+    except:
+        pass
+        print("PIXEL_SAMPLES and/or PIXEL_LINES not defined for "
+              "{}".format(config['camera']))
+
+yfov = config['yfov']
+if not yfov:
+    try:
+        ref_angle = int(cspice.gdpool('INS' + str(camera_id) + '_FOV_REF_ANGLE', 0, 1))
+        cross_angle = int(cspice.gdpool('INS' + str(camera_id) + '_FOV_CROSS_ANGLE', 0, 1))
+        yfov = 2 * ref_angle
+    except:
+        pass
+        print("Field of View aperture angles not defined for "
+              "{}".format(config['camera']))
 
 def render_and_save(filename, path):
     bpy.context.scene.render.filepath = path + filename + ".png"
@@ -67,10 +104,10 @@ def main(et, instrument):
     earth = bpy.context.scene.objects["Earth"]
     moon = bpy.context.scene.objects["Moon"]
 
-    cam.data.angle = math.radians(config["yfov"])
+    cam.data.angle = math.radians(yfov)
     r = bpy.context.scene.render
-    r.resolution_x = config["pxlines"]
-    r.resolution_y = config["pxsamples"]
+    r.resolution_x = pixel_samples
+    r.resolution_y = pixel_lines
 
     # update_object_pose(et, cam, 'JUICE_JMC-1', 'JUICE_JMC-1', 'JUICE_JMC-1', 'JUICE_JMC-1', 'LT+S', cam=True)
     update_object_pose(et, juice, 'JUICE', 'JUICE_SPACECRAFT', instrument, instrument, lt)
