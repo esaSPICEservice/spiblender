@@ -6,6 +6,21 @@ import os
 import json
 import numpy as np
 
+'''
+   developed and maintained by the
+    __   __   __      __   __     __   ___     __   ___  __          __   ___
+   /__\ /__` '__\    /__` |__) | /  ` |__     /__` |__  |__) \  / | /  ` |__
+   \__, .__/ \__/    .__/ |    | \__, |___    .__/ |___ |  \  \/  | \__, |___
+
+   If you have any questions regarding this file contact the
+   ESA SPICE Service (ESS) at ESAC:
+
+           Alfredo Escalante Lopez
+           (+34) 91-8131-429
+           alfredo.escalante.lopez@ext.esa.int
+
+'''
+
 with open('config.json', 'r') as f:
     config = json.load(f)
 
