@@ -8,7 +8,7 @@ SPICE is an essential tool for scientists and engineers alike in the
 planetary science field for Solar System Geometry. Please visit the NAIF 
 website for more details about SPICE.
 
-![alt text](https://github.com/esaSPICEservice/spiblender/blob/master/SIM/JUICE_JMC-12034-12-24T21:17:14.png?raw=true) 
+![alt text](https://github.com/esaSPICEservice/spiblender/blob/main/SIM/JUICE_JMC-12034-12-24T21:17:14.png?raw=true) 
 
 Function and Purpose
 --------------------
