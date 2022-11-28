@@ -53,7 +53,9 @@ Installation
 ------------
 
 There is no need to install SPiBlender. If you wish to use SPiBlender, first download or clone the project. 
-Then update the config file ``config.json`` with the parameters for your study case and run ``render.sh``.
+Then update the config file ``config.json`` with the parameters for your study case and the shell script ``render.sh``
+with the path to your Blender installation. This shell script illustrates how to execute the ``spiblender.py`` Python
+script from the command line without Blender GUI. 
 
 
 Requirements:
