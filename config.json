@@ -1,7 +1,7 @@
 {
-  "metakernel": "/Users/aescalante/spice/missions/juice/juice/kernels/mk/juice_crema_5_1_150lb_local.tm",
-  "utc0": "2034-Dec-24 21:17:13.805",
-  "utcf": "2034-Dec-24 21:17:13.806",
+  "metakernel": "/Users/aescalante/spice/missions/juice/juice/kernels/mk/juice_plan_local.tm",
+  "utc0": "2024-Aug-20 21:52:13.196",
+  "utcf": "2024-Aug-20 21:52:13.197",
   "tsamples": 1,
   "instrument": "JUICE_JMC-1",
   "instrument_frame": "",
@@ -10,5 +10,7 @@
   "pxlines": "",
   "pxsamples": "",
   "lightfactor": 10,
-  "output": "/Users/aescalante/spice/packages/spiblender/SIM/"
+  "clip_start":0.000001,
+  "clip_end":1000000000,
+  "output": "/Users/aescalante/Documents/GitHub/spiblender/SIM/"
 }

@@ -66,6 +66,9 @@ if not pixel_lines or not pixel_samples:
         print("PIXEL_SAMPLES and/or PIXEL_LINES not defined for "
               "{}".format(config['camera']))
 
+clip_start = config['clip_start']
+clip_end = config['clip_end']
+
 yfov = config['yfov']
 if not yfov:
     try:
@@ -111,6 +114,8 @@ def main(et, instrument):
     cam = bpy.context.scene.objects["Camera"]
     sun = bpy.context.scene.objects["Sun"]
     juice = bpy.context.scene.objects["JUICE"]
+    juice_sapy = bpy.context.scene.objects["JUICE_SAPY"]
+    juice_samy = bpy.context.scene.objects["JUICE_SAMY"]
     jupiter = bpy.context.scene.objects["Jupiter"]
     ganymede = bpy.context.scene.objects["Ganymede"]
     europa = bpy.context.scene.objects["Europa"]
@@ -120,12 +125,16 @@ def main(et, instrument):
     moon = bpy.context.scene.objects["Moon"]
 
     cam.data.angle = math.radians(yfov)
+    cam.data.clip_start = clip_start
+    cam.data.clip_end = clip_end
     r = bpy.context.scene.render
     r.resolution_x = pixel_samples
     r.resolution_y = pixel_lines
 
     # update_object_pose(et, cam, 'JUICE_JMC-1', 'JUICE_JMC-1', 'JUICE_JMC-1', 'JUICE_JMC-1', 'LT+S', cam=True)
     update_object_pose(et, juice, 'JUICE', 'JUICE_SPACECRAFT', instrument, instrument, lt)
+    update_object_pose(et, juice_sapy, 'JUICE_SA+Y', 'JUICE_SA+Y', instrument, instrument, lt)
+    update_object_pose(et, juice_samy, 'JUICE_SA-Y', 'JUICE_SA+Y', instrument, instrument, lt)
     update_object_pose(et, jupiter, 'JUPITER', 'IAU_JUPITER', instrument, instrument, lt)
     update_object_pose(et, ganymede, 'GANYMEDE', 'IAU_GANYMEDE', instrument, instrument, lt)
     update_object_pose(et, europa, 'EUROPA', 'IAU_EUROPA', instrument, instrument, lt)
@@ -136,7 +145,7 @@ def main(et, instrument):
     update_dirlight(et, sun, instrument, instrument, lt)
 
     utc = cspice.et2utc(et, 'ISOC', 0)
-    render_and_save(instrument + utc, config["output"])
+    render_and_save(instrument + '_' + utc, config["output"])
 
 
 for et in times:
