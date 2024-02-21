@@ -1,16 +1,16 @@
 {
   "metakernel": "/Users/aescalante/spice/missions/juice/juice/kernels/mk/juice_plan_local.tm",
-  "utc0": "2024-Aug-19 21:24:08",
-  "utcf": "2024-Aug-19 21:24:09",
+  "utc0": "2024-Aug-20 21:52:13",
+  "utcf": "2024-Aug-20 21:52:13",
   "tsamples": 1,
-  "instrument": "JUICE_NAVCAM-1",
+  "instrument": "JUICE_JMC-1",
   "instrument_frame": "",
   "lt": "LT+S",
   "yfov": "",
   "pxlines": "",
   "pxsamples": "",
   "lightfactor": 10,
-  "clip_start":0.001,
+  "clip_start":0.000001,
   "clip_end":1000000000,
   "output": "/Users/aescalante/Documents/GitHub/spiblender/SIM/"
 }

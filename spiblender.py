@@ -113,7 +113,7 @@ def update_dirlight(et, sun, center, center_frame, lt):
 def main(et, instrument):
     cam = bpy.context.scene.objects["Camera"]
     sun = bpy.context.scene.objects["Sun"]
-    juice = bpy.context.scene.objects["JUICE"]
+    spacecraft = bpy.context.scene.objects["JUICE"]
     juice_sapy = bpy.context.scene.objects["JUICE_SAPY"]
     juice_samy = bpy.context.scene.objects["JUICE_SAMY"]
     jupiter = bpy.context.scene.objects["Jupiter"]
@@ -123,6 +123,8 @@ def main(et, instrument):
     io = bpy.context.scene.objects["Io"]
     earth = bpy.context.scene.objects["Earth"]
     moon = bpy.context.scene.objects["Moon"]
+    mars = bpy.context.scene.objects["Mars"]
+    deimos = bpy.context.scene.objects["Deimos"]
 
     cam.data.angle = math.radians(yfov)
     cam.data.clip_start = clip_start
@@ -131,8 +133,7 @@ def main(et, instrument):
     r.resolution_x = pixel_samples
     r.resolution_y = pixel_lines
 
-    # update_object_pose(et, cam, 'JUICE_JMC-1', 'JUICE_JMC-1', 'JUICE_JMC-1', 'JUICE_JMC-1', 'LT+S', cam=True)
-    update_object_pose(et, juice, 'JUICE', 'JUICE_SPACECRAFT', instrument, instrument, lt)
+    update_object_pose(et, spacecraft, 'JUICE', 'JUICE_SPACECRAFT', instrument, instrument, lt)
     update_object_pose(et, juice_sapy, 'JUICE_SA+Y', 'JUICE_SA+Y', instrument, instrument, lt)
     update_object_pose(et, juice_samy, 'JUICE_SA-Y', 'JUICE_SA+Y', instrument, instrument, lt)
     update_object_pose(et, jupiter, 'JUPITER', 'IAU_JUPITER', instrument, instrument, lt)
@@ -142,6 +143,8 @@ def main(et, instrument):
     update_object_pose(et, io, 'IO', 'IAU_IO', instrument, instrument, lt)
     update_object_pose(et, earth, 'EARTH', 'IAU_EARTH', instrument, instrument, lt)
     update_object_pose(et, moon, 'MOON', 'IAU_MOON', instrument, instrument, lt)
+    update_object_pose(et, mars, 'MARS', 'IAU_MARS', instrument, instrument, lt)
+    update_object_pose(et, deimos, 'DEIMOS', 'IAU_DEIMOS', instrument, instrument, lt)
     update_dirlight(et, sun, instrument, instrument, lt)
 
     utc = cspice.et2utc(et, 'ISOC', 0)
